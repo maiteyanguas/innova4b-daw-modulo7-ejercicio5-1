@@ -27,7 +27,10 @@ public class MovieListerTest {
 	
 	@Test
 	public void encuentra_las_peliculas_en_la_BD(){
-		Finder finder = new FinderFromDB();
+		FinderFromDB finder = new FinderFromDB();
+		finder.setUrl("jdbc:mysql://localhost/movies");
+		finder.setUser("root");
+		finder.setPassword("root");
 		movieLister.setFinder(finder);
 		Movie[] movies = movieLister.moviesDirectedBy("Kubrik");
 		assertEquals(3, movies.length);

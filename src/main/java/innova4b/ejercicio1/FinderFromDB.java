@@ -16,6 +16,10 @@ public class FinderFromDB implements Finder {
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
+	private String url;
+	private String user;
+	private String password;
+
 
 	@Override
 	public List<Movie> findAll(){
@@ -27,7 +31,8 @@ public class FinderFromDB implements Finder {
 		List<Movie> movies = new ArrayList<Movie>();	
 		
 		try {			
-			String connectionUrl = "jdbc:mysql://localhost/movies?user=root&password=root";
+			
+			String connectionUrl = url+"?user="+user+"&password="+password;
 			connect = DriverManager.getConnection(connectionUrl);
 			statement = connect.createStatement();
 			resultSet = statement.executeQuery("select * from movies");			
@@ -47,6 +52,30 @@ public class FinderFromDB implements Finder {
 			movies.add(movie);
 		}
 		return movies;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

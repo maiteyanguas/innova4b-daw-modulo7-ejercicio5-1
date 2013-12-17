@@ -10,8 +10,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		 ApplicationContext context = new ClassPathXmlApplicationContext("innova4b/ejercicio1/application-context.xml");
-		 MovieLister movieLister = context.getBean("movieListerFromText", MovieLister.class);
-		 Movie[] movies = movieLister.moviesDirectedBy("Almodovar");
+		 MovieLister movieLister = context.getBean("movieListerFromDB", MovieLister.class);
+		 Movie[] movies = movieLister.moviesDirectedBy("Kubrik");
 		 System.out.println(movies[0].getName());
 	}
 
