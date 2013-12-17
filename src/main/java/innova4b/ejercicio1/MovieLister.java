@@ -5,17 +5,8 @@ import java.util.List;
 
 import innova4b.ejercicio1.model.Movie;
 
-
-public class MovieLister {
-	private Finder finder;
-	
-	public void setFinder(Finder finder) {
-		this.finder = finder;
-	}
-
-//	public MovieLister(){
-//		finder = new FinderFromText("movies.txt");
-//	}
+public abstract class MovieLister {
+	protected Finder finder;
 
 	public Movie[] moviesDirectedBy(String director){
 		

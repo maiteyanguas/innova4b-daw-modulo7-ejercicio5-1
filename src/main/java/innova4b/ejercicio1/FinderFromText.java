@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
+import org.springframework.stereotype.Component;
 
 import innova4b.ejercicio1.model.Movie;
 

@@ -8,8 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import innova4b.ejercicio1.model.Movie;
 
+@Component
 public class FinderFromDB implements Finder {
 
 	private Connection connect = null;

@@ -4,18 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="finderFromDB" class="innova4b.ejercicio1.FinderFromDB" />
+	 <context:annotation-config/>
+	 <context:component-scan base-package="innova4b.ejercicio1"></context:component-scan>
 	
 	<bean id="finderFromText" class="innova4b.ejercicio1.FinderFromText">
 		<constructor-arg name="texto" value="resources/movies1.txt" />
 	</bean>
 
-	<bean id="movieListerFromText" class="innova4b.ejercicio1.MovieLister">
-		<property name="finder" ref="finderFromText" />
-	</bean>
+	<bean id="movieListerFromText" class="innova4b.ejercicio1.MovieListerFromText"/>
 	
-	<bean id="movieListerFromDB" class="innova4b.ejercicio1.MovieLister">
-		<property name="finder" ref="finderFromDB" />
-	</bean>
+	<bean id="movieListerFromDB" class="innova4b.ejercicio1.MovieListerFromDB"/>
 
 </beans>
