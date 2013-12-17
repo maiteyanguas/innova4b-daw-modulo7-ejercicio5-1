@@ -39,5 +39,13 @@ public class MovieListerConApplicationContextTest {
 		Movie[] movies = movieLister.moviesDirectedBy("Kubrik");
 		assertEquals(3, movies.length);
 	}
+	
+	@Test
+	public void el_bean_es_un_singleton_por_defecto(){
+		FinderFromDB finder = context.getBean("finderFromDB", FinderFromDB.class);
+		finder.setUser("chuchu");
+		FinderFromDB finder2 = context.getBean("finderFromDB", FinderFromDB.class);
+		assertEquals(finder.getUser(), finder2.getUser());
+	}
 
 }
