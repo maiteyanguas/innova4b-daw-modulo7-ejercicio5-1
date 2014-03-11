@@ -7,19 +7,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:innova4b/ejercicio1/application-context.xml")
+@ContextConfiguration(classes=ApplicationContextConfig.class)
 public class MovieListerConApplicationContextTest {
 	
-	ApplicationContext context;
+	AnnotationConfigApplicationContext context;
 	
 	@Before
 	public void setUp() {
-		context = new ClassPathXmlApplicationContext("innova4b/ejercicio1/application-context.xml");
+		context = new AnnotationConfigApplicationContext();
+		context.scan("innova4b.ejercicio1");
+		context.refresh();
 	}
 
 	@Test
