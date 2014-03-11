@@ -10,9 +10,4 @@ public class ApplicationContextConfig {
 		return new FinderFromText("resources/movies1.txt");
 	}
 	
-	@Bean
-	public DBConfigurator dbConfigurator(){
-		return new DBConfigurator("jdbc:mysql://localhost/movies", "root", "root");
-	}
-	
 }
