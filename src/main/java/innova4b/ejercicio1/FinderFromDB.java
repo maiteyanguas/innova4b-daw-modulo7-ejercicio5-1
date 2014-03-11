@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import innova4b.ejercicio1.model.Movie;
@@ -18,7 +19,13 @@ public class FinderFromDB implements Finder {
 	private Connection connect = null;
 	private Statement statement = null;
 	private ResultSet resultSet = null;
-
+	
+	@Autowired
+	private DBConfigurator dbConfigurator;
+	
+	public void setDbConfigurator(DBConfigurator dbConfigurator) {
+		this.dbConfigurator = dbConfigurator;
+	}
 
 	@Override
 	public List<Movie> findAll(){
@@ -30,7 +37,7 @@ public class FinderFromDB implements Finder {
 		List<Movie> movies = new ArrayList<Movie>();	
 		
 		try {			
-			String connectionUrl = "jdbc:mysql://localhost/movies?user=root&password=root";
+			String connectionUrl = dbConfigurator.getConnectionUrl();
 			connect = DriverManager.getConnection(connectionUrl);
 			statement = connect.createStatement();
 			resultSet = statement.executeQuery("select * from movies");			
@@ -51,5 +58,7 @@ public class FinderFromDB implements Finder {
 		}
 		return movies;
 	}
+
+	
 
 }

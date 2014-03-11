@@ -23,6 +23,8 @@ public class MovieListerTest {
 	public void encuentra_las_peliculas_en_la_BD(){
 		MovieListerFromDB movieListerFromDB = new MovieListerFromDB();
 		FinderFromDB finderFromDB = new FinderFromDB();
+		DBConfigurator dbConfigurator = new DBConfigurator("jdbc:mysql://localhost/movies", "root", "root");
+		finderFromDB.setDbConfigurator(dbConfigurator);
 		movieListerFromDB.setFinderFromDB(finderFromDB);
 		Movie[] movies = movieListerFromDB.moviesDirectedBy("Kubrik");
 		assertEquals(3, movies.length);

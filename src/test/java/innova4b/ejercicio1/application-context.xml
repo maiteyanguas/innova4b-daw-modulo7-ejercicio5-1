@@ -4,18 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	 
-	 <bean id="finderFromDB" class="innova4b.ejercicio1.FinderFromDB" />
+	<context:annotation-config/>
+	<context:component-scan base-package="innova4b.ejercicio1"></context:component-scan>
 	
 	<bean id="finderFromText" class="innova4b.ejercicio1.FinderFromText">
 		<constructor-arg name="texto" value="resources/movies1.txt" />
 	</bean>
-
-	<bean id="movieListerFromText" class="innova4b.ejercicio1.MovieListerFromText">
-		<property name="finderFromText" ref="finderFromText"/>
-	</bean>
 	
-	<bean id="movieListerFromDB" class="innova4b.ejercicio1.MovieListerFromDB">
-		<property name="finderFromDB" ref="finderFromDB"/>
+	<bean id="dbConfigurator" class="innova4b.ejercicio1.DBConfigurator">
+		<constructor-arg name="url" value="jdbc:mysql://localhost/movies" />
+		<constructor-arg name="user" value="root" />
+		<constructor-arg name="password" value="root" />
 	</bean>
 
 </beans>
